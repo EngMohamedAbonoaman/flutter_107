@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add,color: Colors.white,),
         onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AddTaskScreen()));
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AddTaskScreen()));
         },
         backgroundColor: AllColors.primaryColor,
       ),

@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../shared/appStyles.dart';
 
 class BuildTextField extends StatelessWidget {
-   BuildTextField({super.key,required this.hint,required this.title, this.size=10});
+   BuildTextField({super.key,required this.hint,required this.title, this.size=10,required this.controller});
   String title;
   String hint;
  double size;
+ TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class BuildTextField extends StatelessWidget {
           Text(title,style: AppStyle.medStyle.copyWith(color: Colors.black,fontSize: 22),),
           SizedBox(height: 10,),
           TextFormField(
+
             decoration: InputDecoration(
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20)
@@ -26,6 +28,7 @@ class BuildTextField extends StatelessWidget {
               hintText: hint,
 
             ),
+            controller: controller,
           )
         ],
       ),

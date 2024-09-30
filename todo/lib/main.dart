@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/networking/DB.dart';
 import 'package:todo/screens/home_page.dart';
 
-void main(){
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await DBRepo.initializeDB();
   runApp(MyApp());
 }
 

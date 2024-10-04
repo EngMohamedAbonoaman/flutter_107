@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/networking/DB.dart';
+import 'package:todo/screens/edit_task_screen.dart';
 
 import '../shared/AllColors.dart';
 import '../shared/appStyles.dart';
@@ -18,6 +19,8 @@ class AllTasks extends StatelessWidget {
 
     },
   ];
+
+  List<String> tasks2 = ["task1","task2","task3"];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -38,7 +41,9 @@ class AllTasks extends StatelessWidget {
                   ],
                 ),
                 Spacer(),
-                Icon(Icons.edit,color: AllColors.secondColor,),
+                IconButton(icon: Icon(Icons.edit,color: AllColors.primaryColor,),onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>EditTaskScreen(task: DBRepo.myList[index] ,)));
+                },),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: IconButton(icon: Icon(Icons.delete,color: AllColors.secondColor,),onPressed: (){
@@ -47,7 +52,8 @@ class AllTasks extends StatelessWidget {
                     });
                   },),
                 ),
-                Icon(Icons.check_circle_outline_outlined,color: AllColors.secondColor,),
+                Icon(  DBRepo.myList[index]['status']==1? Icons.check_box:
+                Icons.check_box_outline_blank,color: AllColors.secondColor,),
               ],
             ),
           )

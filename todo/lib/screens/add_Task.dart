@@ -56,13 +56,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     DBRepo.insert(id: int.parse(idController.text),
                         title: titleController.text,
                         description: detailsController.text,
-                        status: 0).then((value){
+                        status: 1).then((value){
                       setState(() {
                         isLoading  = false;
                         clearControllers();
                         Navigator.pop(context);
                       });
-                    }).catchError((onError){
+                    }).catchError((onError) {
                       print(onError.toString());
                     });
                   },

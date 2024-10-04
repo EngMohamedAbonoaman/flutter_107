@@ -8,12 +8,12 @@ class AppStyle{
     color: Colors.white
   );
   static const medStyle = TextStyle(
-    fontSize: 13,
+    fontSize: 18,
     fontWeight: FontWeight.w500,
     color: Colors.white
   );
   static const smallStyle = TextStyle(
-    fontSize: 10,
+    fontSize: 14,
 
     color: Colors.white
   );

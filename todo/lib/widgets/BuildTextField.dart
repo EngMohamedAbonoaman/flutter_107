@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../shared/appStyles.dart';
 
 class BuildTextField extends StatelessWidget {
-   BuildTextField({super.key,required this.hint,required this.title, this.size=10,required this.controller});
+   BuildTextField({super.key,required this.hint,required this.title, this.size=10,required this.controller,this.enabled = true});
   String title;
   String hint;
  double size;
+ bool enabled;
  TextEditingController controller;
 
   @override
@@ -21,11 +22,13 @@ class BuildTextField extends StatelessWidget {
           TextFormField(
 
             decoration: InputDecoration(
+
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20)
               ),
               contentPadding: EdgeInsets.only(bottom: size,top: size,left: 5),
               hintText: hint,
+              enabled: enabled
 
             ),
             controller: controller,

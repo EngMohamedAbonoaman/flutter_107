@@ -43,7 +43,7 @@ class DBRepo {
     required String description,
     required int status,
   }) async {
-    List<Map<String, Object?>> myList = [];
+
     await Future.delayed(Duration(seconds: 2));
     await mydb.insert('tasks', {
       'id': id,

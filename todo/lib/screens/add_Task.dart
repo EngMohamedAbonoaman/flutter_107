@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/networking/DB.dart';
+import 'package:todo/state/add_task_cubit.dart';
 import 'package:todo/widgets/BuildTextField.dart';
 
 import '../shared/AllColors.dart';
@@ -53,7 +55,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     setState(() {
                       isLoading  = true;
                     });
-                    DBRepo.insert(id: int.parse(idController.text),
+                    BlocProvider.of<AddTaskCubit>(context).insert(id: int.parse(idController.text),
                         title: titleController.text,
                         description: detailsController.text,
                         status: 1).then((value){

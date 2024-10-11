@@ -5,6 +5,7 @@ import 'package:todo/screens/complete.dart';
 import 'package:todo/shared/AllColors.dart';
 import 'package:todo/shared/AllStrings.dart';
 import 'package:todo/shared/appStyles.dart';
+import 'package:todo/shared/cach_helper.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   ];
 
   int currentIndex = 0;
-
+  bool isDark = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +36,17 @@ class _HomePageState extends State<HomePage> {
 
         ],
       ),
-      backgroundColor: AllColors.secondColor,
-      body: screens[currentIndex],
+      backgroundColor: isDark? Colors.black:AllColors.secondColor,
+
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add,color: Colors.white,),
-        onPressed: (){
-           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AddTaskScreen()));
+        onPressed: () async{
+            await CacheHelper.setValues(key: "dark", value: !isDark);
+            setState(() {
+              isDark = CacheHelper.getBool(key: "dark");
+            });
+
+           // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AddTaskScreen()));
         },
         backgroundColor: AllColors.primaryColor,
       ),
